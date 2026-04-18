@@ -1,16 +1,28 @@
 #root {
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.StatusPage, .Home {
   margin: 20px auto;
   background-color: aliceblue;
   border: 2px solid #333;
   border-radius: 10px;
-  min-height: 400px;
+  padding: 20px 30px;
+  min-width: 450px;
 }
 h1 {
   text-align: left;
-  margin-left: 20px;
   margin-bottom: 30px;
+  margin-top: 10px;
   font-size: 40px;
   font-family: Arial, Helvetica, sans-serif;
+}
+h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 select {
   padding: 10px;
@@ -28,4 +40,8 @@ button {
 }
 .Home {
   margin-top: 20px;
+}
+
+.StatusPage .msg {
+  color: orange;
 }
