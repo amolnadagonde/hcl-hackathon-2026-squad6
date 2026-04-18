@@ -1,5 +1,5 @@
 HCL Hackathon 2026 - Squad 6
-Credit Card Application
+Credit Card Application System
 
 Steps:
 
