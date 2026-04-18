@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import InputField from "../components/input/InputField";
+import { useNavigate } from "react-router-dom";
 
 export default function ApplicationForm() {
   const { users, addUser } = useContext(UserContext);
@@ -15,6 +16,7 @@ export default function ApplicationForm() {
     creditScore: "",
     annualIncome: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -65,22 +67,6 @@ export default function ApplicationForm() {
       setErrors({});
       addUser(formData); // add to Context
 
-      // Optional: send to dummy API
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/posts",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-          },
-        );
-        const data = await response.json();
-        console.log("API response:", data);
-      } catch (err) {
-        console.error("API error:", err);
-      }
-
       alert("Form submitted successfully!");
       setFormData({
         id: "",
@@ -92,6 +78,7 @@ export default function ApplicationForm() {
         creditScore: "",
         annualIncome: "",
       });
+      navigate("/status");
     }
   };
 

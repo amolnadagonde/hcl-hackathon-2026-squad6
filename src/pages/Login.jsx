@@ -13,7 +13,6 @@ function Login() {
     e.preventDefault();
 
     if (email === "admin" && password === "admin") {
-      alert("Admin Login Successful");
       setAuthenticated(true);
       navigate("/admin");
     } else {
@@ -23,26 +22,27 @@ function Login() {
 
   return (
     <div>
-      Login {isAuthenticated ? "Logged In" : "Guest"}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Enter Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <input
-          type="password"
-          placeholder="Enter Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button type="submit" className="button">
-          Login
-        </button>
-      </form>
+          <button type="submit" className="button">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

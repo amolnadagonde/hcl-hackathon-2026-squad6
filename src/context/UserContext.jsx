@@ -28,7 +28,8 @@ export const UserProvider = ({ children }) => {
   ]);
 
   const addUser = (newUser) => {
-    setUsers([...users, newUser]);
+    setUsers((prev) => [...prev, newUser]);
+    window.localStorage.setItem("users", JSON.stringify(users));
   };
 
   return (

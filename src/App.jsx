@@ -14,13 +14,15 @@ import StatusPage from "./pages/StatusPage";
 
 function App() {
   const { isAuthenticated } = useContext(AppContext);
-  console.log("isAuthenticated in App", isAuthenticated);
+
   return (
     <>
       <Router>
         <Routes>
-          <Route element={<ApplicationForm />} path="/" exact />
+          <Route element={<Home />} path="/" exact />
+          <Route element={<ApplicationForm />} path="/form" exact />
           <Route element={<Login />} path="/login" />
+          <Route element={<StatusPage />} path="/status" />
           <Route
             path="/admin"
             element={
