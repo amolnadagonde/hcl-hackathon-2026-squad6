@@ -1,14 +1,15 @@
 import "./App.css";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import { UserProvider } from "./context/UserContext";
+import Login from "./pages/ApplicationForm";
 import StatusPage from "./pages/StatusPage";
 
 function App() {
   return (
     <>
-      {/* <Login /> */}
-      {/* <Home /> */}
-      <StatusPage />
+      <UserProvider>
+      <Login />
+      </UserProvider>
     </>
   );
 }
