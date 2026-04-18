@@ -3,7 +3,7 @@ import { UserContext } from "../context/UserContext";
 import InputField from "../components/input/InputField";
 
 export default function ApplicationForm() {
-  const { addUser } = useContext(UserContext);
+  const { users, addUser } = useContext(UserContext);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     id: "",
@@ -38,6 +38,10 @@ export default function ApplicationForm() {
 
     if (!formData.email || !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email))
       newErrors.email = "Invalid email address";
+
+      const exists = users.some(u => u.pancard === formData.pancard);
+      console.log(users);
+      if (exists) newErrors.pancard = "Already Applied for credit card with same Pan card";
 
     if (!formData.mobile || !/^[6-9][0-9]{9}$/.test(formData.mobile))
       newErrors.mobile = "Invalid mobile number";
@@ -94,6 +98,7 @@ export default function ApplicationForm() {
       {errors.dob && <p className="error">{errors.dob}</p>}
 
       <InputField label="PAN Card" name="pancard" value={formData.pancard} onChange={handleChange} />
+{errors.pancard && <p className="error">{errors.pancard}</p>}
 
       <InputField label="Email" name="email" type="email" value={formData.email} onChange={handleChange} />
       {errors.email && <p className="error">{errors.email}</p>}
