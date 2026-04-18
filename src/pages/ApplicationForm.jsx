@@ -13,7 +13,7 @@ export default function ApplicationForm() {
     email: "",
     mobile: "",
     creditScore: "",
-    annualIncome: ""
+    annualIncome: "",
   });
 
   const handleChange = (e) => {
@@ -36,12 +36,16 @@ export default function ApplicationForm() {
       if (age < 18) newErrors.dob = "You must be at least 18 years old";
     }
 
-    if (!formData.email || !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email))
+    if (
+      !formData.email ||
+      !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)
+    )
       newErrors.email = "Invalid email address";
 
-      const exists = users.some(u => u.pancard === formData.pancard);
-      console.log(users);
-      if (exists) newErrors.pancard = "Already Applied for credit card with same Pan card";
+    const exists = users.some((u) => u.pancard === formData.pancard);
+    console.log(users);
+    if (exists)
+      newErrors.pancard = "Already Applied for credit card with same Pan card";
 
     if (!formData.mobile || !/^[6-9][0-9]{9}$/.test(formData.mobile))
       newErrors.mobile = "Invalid mobile number";
@@ -63,11 +67,14 @@ export default function ApplicationForm() {
 
       // Optional: send to dummy API
       try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
-        });
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          },
+        );
         const data = await response.json();
         console.log("API response:", data);
       } catch (err) {
@@ -83,7 +90,7 @@ export default function ApplicationForm() {
         email: "",
         mobile: "",
         creditScore: "",
-        annualIncome: ""
+        annualIncome: "",
       });
     }
   };
@@ -91,19 +98,46 @@ export default function ApplicationForm() {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Application Form</h2>
-      <InputField label="Name" name="name" value={formData.name} onChange={handleChange} />
+      <InputField
+        label="Name"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+      />
       {errors.name && <p className="error">{errors.name}</p>}
 
-      <InputField label="Date of Birth" name="dob" type="date" value={formData.dob} onChange={handleChange} />
+      <InputField
+        label="Date of Birth"
+        name="dob"
+        type="date"
+        value={formData.dob}
+        onChange={handleChange}
+      />
       {errors.dob && <p className="error">{errors.dob}</p>}
 
-      <InputField label="PAN Card" name="pancard" value={formData.pancard} onChange={handleChange} />
-{errors.pancard && <p className="error">{errors.pancard}</p>}
+      <InputField
+        label="PAN Card"
+        name="pancard"
+        value={formData.pancard}
+        onChange={handleChange}
+      />
+      {errors.pancard && <p className="error">{errors.pancard}</p>}
 
-      <InputField label="Email" name="email" type="email" value={formData.email} onChange={handleChange} />
+      <InputField
+        label="Email"
+        name="email"
+        type="email"
+        value={formData.email}
+        onChange={handleChange}
+      />
       {errors.email && <p className="error">{errors.email}</p>}
 
-      <InputField label="Mobile" name="mobile" value={formData.mobile} onChange={handleChange} />
+      <InputField
+        label="Mobile"
+        name="mobile"
+        value={formData.mobile}
+        onChange={handleChange}
+      />
       {errors.mobile && <p className="error">{errors.mobile}</p>}
 
       <InputField
@@ -116,7 +150,7 @@ export default function ApplicationForm() {
           "₹2,00,000 – ₹5,00,000",
           "₹5,00,000 – ₹10,00,000",
           "₹10,00,000 – ₹20,00,000",
-          "Above ₹20,00,000"
+          "Above ₹20,00,000",
         ]}
       />
       {errors.annualIncome && <p className="error">{errors.annualIncome}</p>}

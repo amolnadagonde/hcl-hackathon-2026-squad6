@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
@@ -6,20 +6,6 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const { isAuthenticated, setAuthenticated } = useContext(AppContext);
   const navigate = useNavigate();
-
-  const handleLogin = () => {
-    // set login to true
-    setAuthenticated(true);
-    navigate("/admin");
-  };
-
-  return (
-    <div>
-      Login {isAuthenticated ? "Logged In" : "Guest"}
-      <button onClick={handleLogin}>Login as Admin</button>
-import { useState } from "react";
-
-function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,39 +14,37 @@ function Login() {
 
     if (email === "admin" && password === "admin") {
       alert("Admin Login Successful");
+      setAuthenticated(true);
+      navigate("/admin");
     } else {
       alert("Invalid Credentials");
     }
   };
 
   return (
-    <div className="container">
-      <div className="box">
-        <h2>Admin Login</h2>
+    <div>
+      Login {isAuthenticated ? "Logged In" : "Guest"}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-          <input
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button type="submit" className="button">
-            Login
-          </button>
-        </form>
-      </div>
+        <button type="submit" className="button">
+          Login
+        </button>
+      </form>
     </div>
   );
 }
-
 
 export default Login;

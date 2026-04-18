@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { AppContext } from "./context/AppContext";
 import Home from "./pages/Home";
 import { UserProvider } from "./context/UserContext";
-import Login from "./pages/ApplicationForm";
+import ApplicationForm from "./pages/ApplicationForm";
 import StatusPage from "./pages/StatusPage";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route element={<ApplicantForm />} path="/" exact />
+          <Route element={<ApplicationForm />} path="/" exact />
           <Route element={<Login />} path="/login" />
           <Route
             path="/admin"
@@ -31,9 +31,6 @@ function App() {
           />
         </Routes>
       </Router>
-      <UserProvider>
-      <Login />
-      </UserProvider>
     </>
   );
 }
