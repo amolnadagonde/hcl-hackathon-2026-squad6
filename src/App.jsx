@@ -1,12 +1,14 @@
 import "./App.css";
 import Home from "./pages/Home";
-// import StatusPage from "./pages/StatusPage";
+import Login from "./pages/Login";
+import StatusPage from "./pages/StatusPage";
 
 function App() {
   return (
     <>
-      <Home />
-      {/* <StatusPage /> */}
+      {/* <Login /> */}
+      {/* <Home /> */}
+      <StatusPage />
     </>
   );
 }
