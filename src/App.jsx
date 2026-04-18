@@ -1,10 +1,13 @@
 import "./App.css";
-import Login from "./pages/Login";
+import { UserProvider } from "./context/UserContext";
+import Login from "./pages/ApplicationForm";
 
 function App() {
   return (
     <>
-      <Login />
+      <UserProvider>
+         <Login />
+      </UserProvider>
     </>
   );
 }
