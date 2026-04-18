@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "pancard": 1234567890,
+    "name": "Peter Parker",
+    "password": "user@123",
+    "dob": "1st Aug 1987",
+    "email": "peter@gmail.com",
+    "mobile": 9943292129,
+    "creditScore": 780,
+    "annualIncome": 1,
+    "creditCardStatus": "NA"
+  },
+  {
+    "id": 1,
+    "pancard": 1122334455,
+    "name": "Oliver Queen",
+    "password": "oliver@123",
+    "dob": "29st Dec 1979",
+    "email": "oliver@gmail.com",
+    "mobile": 9712319084,
+    "creditScore": 840,
+    "annualIncome": 2,
+    "creditCardStatus": "NA"
+  }
+]
